@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { ThemeProvider, useTheme } from './theme/ThemeContext';
+import Header from './components/Header';
+import HabitPieChart from './components/HabitPieChart';
+import UpcomingHabits from './components/UpComingHabits';
 import './App.css';
 
-function App() {
+const AppContent = () => {
+  const { theme } = useTheme();
+
+  const [habits, setHabits] = useState([
+    { name: 'Exercise', completed: false },
+    { name: 'Read', completed: true },
+    { name: 'Meditate', completed: false },
+  ]);
+
+  const toggleHabit = (index) => {
+    const newHabits = [...habits];
+    newHabits[index].completed = !newHabits[index].completed;
+    setHabits(newHabits);
+  };
+
+  const completedCount = habits.filter(habit => habit.completed).length;
+  const totalCount = habits.length;
+  const percentageCompleted = (completedCount / totalCount) * 100;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${theme}`}>
+      <Header />
+      <div className="content">
+        <HabitPieChart percentage={percentageCompleted} />
+        <UpcomingHabits habits={habits} toggleHabit={toggleHabit} />
+      </div>
     </div>
   );
-}
+};
+
+const App = () => (
+  <ThemeProvider>
+    <AppContent />
+  </ThemeProvider>
+);
 
 export default App;

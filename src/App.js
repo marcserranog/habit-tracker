@@ -3,7 +3,7 @@ import { ThemeProvider, useTheme } from './theme/ThemeContext';
 import Header from './components/Header';
 import HabitPieChart from './components/HabitPieChart';
 import UpcomingHabits from './components/UpComingHabits';
-import './App.css';
+import './index.css'; // Tailwind CSS
 
 const AppContent = () => {
   const { theme } = useTheme();
@@ -25,9 +25,9 @@ const AppContent = () => {
   const percentageCompleted = (completedCount / totalCount) * 100;
 
   return (
-    <div className={`App ${theme}`}>
+    <div className={`App ${theme === 'light' ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
       <Header />
-      <div className="content">
+      <div className="flex flex-col lg:flex-row">
         <HabitPieChart percentage={percentageCompleted} />
         <UpcomingHabits habits={habits} toggleHabit={toggleHabit} />
       </div>

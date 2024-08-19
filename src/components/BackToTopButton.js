@@ -1,4 +1,3 @@
-// components/BackToTopButton.js
 import React, { useState, useEffect } from 'react';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -7,11 +6,7 @@ const BackToTopButton = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowButton(true);
-      } else {
-        setShowButton(false);
-      }
+      setShowButton(window.scrollY > 300);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,7 +24,7 @@ const BackToTopButton = () => {
     showButton && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-12 right-3 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-700"
+        className="fixed bottom-12 right-4 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-700"
       >
         <FaArrowUp className="text-xl" />
       </button>

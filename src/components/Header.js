@@ -1,4 +1,3 @@
-// Header.js
 import React from "react";
 import { useTheme } from "../theme/ThemeContext";
 import { FaSun, FaMoon } from "react-icons/fa";

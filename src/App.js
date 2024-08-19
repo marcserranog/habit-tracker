@@ -11,15 +11,14 @@ const AppContent = () => {
 
   /* Estado inicial de los habitos */
   const [habits, setHabits] = useState([
-    { id: 1, name: 'Exercise', completed: false },
-    { id: 2, name: 'Read', completed: true },
-    { id: 3, name: 'Meditate', completed: false },
+    { id: 1, name: 'Exercise', completed: false, timer: 60 },
+    { id: 2, name: 'Read a book', completed: true, timer: 10 },
+    { id: 3, name: 'Meditate', completed: false, timer: 10 },
+    { id: 4, name: 'Write how you feel about today', completed: false, timer: 1},
   ]);
-
-  /* Estado para controlar la visibilidad del modal */
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  /* Funcion para alternar el estado (completado o no) de un habito */
   const toggleHabit = (id) => {
     const newHabits = habits.map((habit) =>
       habit.id === id ? { ...habit, completed: !habit.completed } : habit
@@ -27,11 +26,10 @@ const AppContent = () => {
     setHabits(newHabits);
   };
 
-  /* Funcion para añadir un nuevo hábito */
-  const addHabit = (name) => {
-    const newHabit = { id: habits.length + 1, name, completed: false };
+  const addHabit = (name, timer) => {
+    const newHabit = { id: habits.length + 1, name, completed: false, remainingTime: timer };
     setHabits([...habits, newHabit]);
-    setIsModalOpen(false); // Cerrar el modal después de agregar el hábito
+    setIsModalOpen(false); 
   };
 
   const completedCount = habits.filter(habit => habit.completed).length;

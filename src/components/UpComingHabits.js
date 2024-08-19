@@ -10,13 +10,13 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
       <div className="mb-6">
         <h2 className="text-xl font-bold mb-4">Upcoming Habits</h2>
         <ul>
-          {upcomingHabits.map((habit, index) => (
-            <li key={index} className="mb-2 p-2 bg-gray-100 rounded">
+          {upcomingHabits.map((habit) => (
+            <li key={habit.id} className="mb-2 p-2 bg-gray-100 rounded">
               <label className="flex items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={habit.completed}
-                  onChange={() => toggleHabit(index)}
+                  onChange={() => toggleHabit(habit.id)}
                   className="form-checkbox"
                 />
                 <span className={"text-black"}>
@@ -30,13 +30,13 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
       <div>
         <h2 className="text-xl font-bold mb-4">Completed Habits</h2>
         <ul>
-          {completedHabits.map((habit, index) => (
-            <li key={index} className="mb-2 p-2 bg-green-100 rounded">
+          {completedHabits.map((habit) => (
+            <li key={habit.id} className="mb-2 p-2 bg-green-100 rounded">
               <label className="flex items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={habit.completed}
-                  onChange={() => toggleHabit(index)}
+                  onChange={() => toggleHabit(habit.id)}
                   className="form-checkbox"
                 />
                 <span className={"line-through text-black"}>

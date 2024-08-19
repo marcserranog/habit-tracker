@@ -10,15 +10,16 @@ const AppContent = () => {
 
   /* Estado inicial de los habitos */
   const [habits, setHabits] = useState([
-    { name: 'Exercise', completed: false },
-    { name: 'Read', completed: true },
-    { name: 'Meditate', completed: false },
+    { id: 1, name: 'Exercise', completed: false },
+    { id: 2, name: 'Read', completed: true },
+    { id: 3, name: 'Meditate', completed: false },
   ]);
 
   /* Funcion para alternar el estado (completado o no) de un habito */
-  const toggleHabit = (index) => {
-    const newHabits = [...habits];
-    newHabits[index].completed = !newHabits[index].completed;
+  const toggleHabit = (id) => {
+    const newHabits = habits.map((habit) =>
+      habit.id === id ? { ...habit, completed: !habit.completed } : habit
+    );
     setHabits(newHabits);
   };
 

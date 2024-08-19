@@ -8,12 +8,14 @@ import './index.css'; // Tailwind CSS
 const AppContent = () => {
   const { theme } = useTheme();
 
+  /* Estado inicial de los habitos */
   const [habits, setHabits] = useState([
     { name: 'Exercise', completed: false },
     { name: 'Read', completed: true },
     { name: 'Meditate', completed: false },
   ]);
 
+  /* Funcion para alternar el estado (completado o no) de un habito */
   const toggleHabit = (index) => {
     const newHabits = [...habits];
     newHabits[index].completed = !newHabits[index].completed;

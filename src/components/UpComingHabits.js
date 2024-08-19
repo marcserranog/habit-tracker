@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const UpcomingHabits = ({ habits, toggleHabit }) => {
-  const completedHabits = habits.filter(habit => habit.completed);
-  const upcomingHabits = habits.filter(habit => !habit.completed);
+
+  const completedHabits = habits.filter((habit) => habit.completed);
+  const upcomingHabits = habits.filter((habit) => !habit.completed);
 
   return (
     <div className="w-full lg:w-1/2 p-4">
@@ -18,7 +19,9 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
                   onChange={() => toggleHabit(index)}
                   className="form-checkbox"
                 />
-                <span>{habit.name}</span>
+                <span className={"text-black"}>
+                  {habit.name}
+                </span>
               </label>
             </li>
           ))}
@@ -36,7 +39,9 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
                   onChange={() => toggleHabit(index)}
                   className="form-checkbox"
                 />
-                <span className="line-through">{habit.name}</span>
+                <span className={"line-through text-black"}>
+                  {habit.name}
+                </span>
               </label>
             </li>
           ))}

@@ -6,16 +6,19 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="flex justify-between items-center p-4 bg-gray-800 text-white">
-      <div className="flex items-center">
-        <img
-          src="habitTrackerIcon.png"
-          alt="Habit Tracker Icon"
-          className="w-12 h-12 mr-2"
-        />
-        <h1 className="text-4xl font-bold">Habit Tracker</h1>
-      </div>
-      <button onClick={toggleTheme} className="text-2xl focus:outline-none">
+    <header className="relative flex items-center p-4 bg-gray-800 text-white mb-6">
+      <img
+        src="habitTrackerIcon.png"
+        alt="Habit Tracker Icon"
+        className="w-14 h-14"
+      />
+      <h1 className="absolute left-1/2 transform -translate-x-1/2 text-4xl font-bold">
+        Habit Tracker
+      </h1>
+      <button
+        onClick={toggleTheme}
+        className="ml-auto text-2xl focus:outline-none"
+      >
         {theme === "light" ? <FaMoon /> : <FaSun />}
       </button>
     </header>

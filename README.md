@@ -16,7 +16,7 @@ This project is built using React and is inspired by the idea from the book *"50
 
 ## Demo
 
-You can see a live demo of the application here: [Live Demo](www.google.com)
+You can see a live demo of the application here: [Live Demo](WIP)
 
 ## Getting Started
 
@@ -30,8 +30,8 @@ Before you begin, ensure you have the following installed:
 ### Installation
 1. **Clone the repository:**
 
-`git clone https://github.com/marcserranog/habit-tracker.git
-cd habit-tracker`
+`git clone https://github.com/marcserranog/habit-tracker.git`
+`cd habit-tracker`
 
 2. **Install dependencies:**
 If you're using `npm`:

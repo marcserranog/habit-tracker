@@ -59,7 +59,7 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
                 </span>
               </label>
               {timers[habit.id] !== undefined ? (
-                <span className="ml-4 text-gray-600 dark:text-gray-300">
+                <span className="ml-4 text-red-600 dark:text-gray-300">
                   {formatTime(timers[habit.id])}
                 </span>
               ) : (

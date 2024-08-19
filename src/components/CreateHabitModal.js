@@ -55,7 +55,8 @@ const CreateHabitModal = ({ addHabit, closeModal }) => {
           <button
             type="button"
             onClick={closeModal}
-            className={`ml-4 font-bold py-2 px-4 rounded ${theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-600 text-white'}`}
+            className={`ml-4 font-bold py-2 px-4 rounded ${theme === 'light' ? 'bg-gray-50 text-red-600 hover:bg-slate-200' : 'bg-gray- text-white'}`}
+
           >
             Cancel
           </button>

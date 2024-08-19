@@ -9,18 +9,13 @@ const CreateHabitModal = ({ addHabit, closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name) {
-      setError('Introduce a habit.');
-      return;
-    }
-    if (!timer || isNaN(timer) || timer <= 0) {
-      setError('Please enter a valid timer');
+    const error = !name ? 'Introduce a habit.' : (!timer || isNaN(timer) || timer <= 0) ? 'Please enter a valid timer' : '';
+
+    if (error) {
+      setError(error);
       return;
     }
     addHabit(name, parseInt(timer));
-    setName('');
-    setTimer('');
-    setError('');
   };
 
   return (
@@ -50,7 +45,7 @@ const CreateHabitModal = ({ addHabit, closeModal }) => {
               placeholder="Enter timer in minutes"
             />
           </div>
-          {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+          {error && <p className="text-red-500 text-sm mb-4 ">{error}</p>}
           <button
             type="submit"
             className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${theme === 'light' ? 'bg-blue-600' : 'bg-blue-800'}`}

@@ -3,11 +3,9 @@ import React, { useState, useEffect } from "react";
 const UpcomingHabits = ({ habits, toggleHabit }) => {
   const [timers, setTimers] = useState({});
 
-  // Filtrar hábitos completados y próximos
   const completedHabits = habits.filter((habit) => habit.completed);
   const upcomingHabits = habits.filter((habit) => !habit.completed);
 
-  // Configurar intervalo para actualizar el temporizador
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimers((prevTimers) => {
@@ -16,32 +14,30 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
           if (updatedTimers[id] > 0) {
             updatedTimers[id] -= 1;
           } else {
-            delete updatedTimers[id]; // Elimina el temporizador cuando llega a 0
+            delete updatedTimers[id];
           }
         });
         return updatedTimers;
       });
-    }, 1000); // Actualiza cada segundo
+    }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  // Iniciar el temporizador para un hábito específico
   const handleStartTimer = (id) => {
     const habit = habits.find((habit) => habit.id === id);
-    if (habit && habit.timer) { // Verificar que habit.timer esté definido
+    if (habit?.timer) {
       setTimers((prevTimers) => ({
         ...prevTimers,
-        [id]: habit.timer * 60, // Convertir minutos a segundos
+        [id]: habit.timer * 60,
       }));
     }
   };
 
-  // Formatear el tiempo en formato MM:SS min
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')} min`;
+    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")} min`;
   };
 
   return (
@@ -58,7 +54,7 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
                   onChange={() => toggleHabit(habit.id)}
                   className="form-checkbox"
                 />
-                <span className={"text-black dark:text-white"}>
+                <span className="text-black dark:text-white">
                   {habit.name}
                 </span>
               </label>
@@ -90,7 +86,7 @@ const UpcomingHabits = ({ habits, toggleHabit }) => {
                   onChange={() => toggleHabit(habit.id)}
                   className="form-checkbox"
                 />
-                <span className={"line-through text-black dark:text-gray-300"}>
+                <span className="line-through text-black dark:text-gray-300">
                   {habit.name}
                 </span>
               </label>
